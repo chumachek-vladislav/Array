@@ -4,16 +4,16 @@
 #include <time.h>
 #include "array.h"
 
-// ================== ФУНКЦИИ ДЛЯ ЛАБОРАТОРНОЙ 14 ==================
-// Функция для вычисления f(x)
+// ================== Г”Г“ГЌГЉГ–Г€Г€ Г„Г‹Гџ Г‹ГЂГЃГЋГђГЂГ’ГЋГђГЌГЋГ‰ 14 ==================
+// Г”ГіГ­ГЄГ¶ГЁГї Г¤Г«Гї ГўГ»Г·ГЁГ±Г«ГҐГ­ГЁГї f(x)
 double func(double x) {
     return x * x - 2 * x + 1;
 }
 
-// 1. Заполнение массива значениями через func()
+// 1. Г‡Г ГЇГ®Г«Г­ГҐГ­ГЁГҐ Г¬Г Г±Г±ГЁГўГ  Г§Г­Г Г·ГҐГ­ГЁГїГ¬ГЁ Г·ГҐГ°ГҐГ§ func()
 double* full_elements(double* array_14, int size) {
     if (array_14 == NULL || size <= 0) {
-        printf("Ошибка: некорректные параметры в full_elements()\n");
+        printf("ГЋГёГЁГЎГЄГ : Г­ГҐГЄГ®Г°Г°ГҐГЄГІГ­Г»ГҐ ГЇГ Г°Г Г¬ГҐГІГ°Г» Гў full_elements()\n");
         return NULL;
     }
 
@@ -24,14 +24,14 @@ double* full_elements(double* array_14, int size) {
 
     return array_14;
 }
-// 2. Печать массива
+// 2. ГЏГҐГ·Г ГІГј Г¬Г Г±Г±ГЁГўГ 
 void print_array(double* array_14, int size) {
     for (int i = 0; i < size; i++) {
         printf("arr[%d] = %.2f\n", i, array_14[i]);
     }
 }
 
-// 3. Сумма элементов
+// 3. Г‘ГіГ¬Г¬Г  ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў
 double sum_array(double* array_14, int n) {
     double sum = 0;
     for (int i = 0; i < n; i++) {
@@ -40,7 +40,7 @@ double sum_array(double* array_14, int n) {
     return sum;
 }
 
-// 4. Пункт 9: Максимальное значение, не равное A
+// 4. ГЏГіГ­ГЄГІ 9: ГЊГ ГЄГ±ГЁГ¬Г Г«ГјГ­Г®ГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ, Г­ГҐ Г°Г ГўГ­Г®ГҐ A
 double find_max_not_A(double* array_14, int n, double A) {
     double max_val = -1e9;
     int found = 0;
@@ -53,46 +53,45 @@ double find_max_not_A(double* array_14, int n, double A) {
         }
     }
     if (!found) {
-        printf("Все элементы равны A или массив пуст!\n");
+        printf("Г‚Г±ГҐ ГЅГ«ГҐГ¬ГҐГ­ГІГ» Г°Г ГўГ­Г» A ГЁГ«ГЁ Г¬Г Г±Г±ГЁГў ГЇГіГ±ГІ!\n");
         return 0;
     }
     return max_val;
 }
 
 
-// ================== ФУНКЦИИ ДЛЯ ЛАБОРАТОРНОЙ 16 ==================
-
-// 1. Создание массива со случайными числами от -1.0 до 1.0
+// ================== Г”Г“ГЌГЉГ–Г€Г€ Г„Г‹Гџ Г‹ГЂГЃГЋГђГЂГ’ГЋГђГЌГЋГ‰ 16 ==================
+// 1. Г‘Г®Г§Г¤Г Г­ГЁГҐ Г¬Г Г±Г±ГЁГўГ  Г±Г® Г±Г«ГіГ·Г Г©Г­Г»Г¬ГЁ Г·ГЁГ±Г«Г Г¬ГЁ Г®ГІ -1.0 Г¤Г® 1.0
 double* create_random_array(int size) {
     if (size <= 0) return NULL;
 
     double* array = (double*)malloc(size * sizeof(double));
     if (array == NULL) {
-        printf("Ошибка выделения памяти!\n");
+        printf("ГЋГёГЁГЎГЄГ  ГўГ»Г¤ГҐГ«ГҐГ­ГЁГї ГЇГ Г¬ГїГІГЁ!\n");
         return NULL;
     }
 
-    // Инициализация ГСЧ
+    // Г€Г­ГЁГ¶ГЁГ Г«ГЁГ§Г Г¶ГЁГї ГѓГ‘Г—
     static int seeded = 0;
     if (!seeded) {
         srand(time(NULL));
         seeded = 1;
     }
 
-    // Заполнение случайными числами от -1.0 до 1.0
+    // Г‡Г ГЇГ®Г«Г­ГҐГ­ГЁГҐ Г±Г«ГіГ·Г Г©Г­Г»Г¬ГЁ Г·ГЁГ±Г«Г Г¬ГЁ Г®ГІ -1.0 Г¤Г® 1.0
     for (int i = 0; i < size; i++) {
-        // Генерация числа от -1.0 до 1.0
+        // ГѓГҐГ­ГҐГ°Г Г¶ГЁГї Г·ГЁГ±Г«Г  Г®ГІ -1.0 Г¤Г® 1.0
         array[i] = (rand() / (double)RAND_MAX) * 2.0 - 1.0;
     }
     return array;
 }
 
-// 2. Нахождение минимального среди трёх значений с учётом "отсутствующих пар"
+// 2. ГЌГ ГµГ®Г¦Г¤ГҐГ­ГЁГҐ Г¬ГЁГ­ГЁГ¬Г Г«ГјГ­Г®ГЈГ® Г±Г°ГҐГ¤ГЁ ГІГ°ВёГµ Г§Г­Г Г·ГҐГ­ГЁГ© Г± ГіГ·ВёГІГ®Г¬ "Г®ГІГ±ГіГІГ±ГІГўГіГѕГ№ГЁГµ ГЇГ Г°"
 double find_min_among_three(double a, double b, double c, int* valid_count) {
     double min_val;
     *valid_count = 0;
 
-    // Проверяем, какие значения "валидны" (представлены)
+    // ГЏГ°Г®ГўГҐГ°ГїГҐГ¬, ГЄГ ГЄГЁГҐ Г§Г­Г Г·ГҐГ­ГЁГї "ГўГ Г«ГЁГ¤Г­Г»" (ГЇГ°ГҐГ¤Г±ГІГ ГўГ«ГҐГ­Г»)
     double values[3];
     int count = 0;
     values[count++] = a;
@@ -105,17 +104,17 @@ double find_min_among_three(double a, double b, double c, int* valid_count) {
     return min_val;
 }
 
-// 3. Создание массива d по правилу d[i] = min(a[i], b[i], c[i])
+// 3. Г‘Г®Г§Г¤Г Г­ГЁГҐ Г¬Г Г±Г±ГЁГўГ  d ГЇГ® ГЇГ°Г ГўГЁГ«Гі d[i] = min(a[i], b[i], c[i])
 double* create_d_array_min(double* a, int size_a, double* b, int size_b, double* c, int size_c, int* result_size) {
-    // Находим максимальную длину из трёх массивов
+    // ГЌГ ГµГ®Г¤ГЁГ¬ Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­ГіГѕ Г¤Г«ГЁГ­Гі ГЁГ§ ГІГ°ВёГµ Г¬Г Г±Г±ГЁГўГ®Гў
     int max_size = size_a;
     if (size_b > max_size) max_size = size_b;
     if (size_c > max_size) max_size = size_c;
 
-    // Создаём результирующий массив
+    // Г‘Г®Г§Г¤Г ВёГ¬ Г°ГҐГ§ГіГ«ГјГІГЁГ°ГіГѕГ№ГЁГ© Г¬Г Г±Г±ГЁГў
     double* d = (double*)malloc(max_size * sizeof(double));
     if (d == NULL) {
-        printf("Ошибка выделения памяти для массива d!\n");
+        printf("ГЋГёГЁГЎГЄГ  ГўГ»Г¤ГҐГ«ГҐГ­ГЁГї ГЇГ Г¬ГїГІГЁ Г¤Г«Гї Г¬Г Г±Г±ГЁГўГ  d!\n");
         *result_size = 0;
         return NULL;
     }
@@ -131,9 +130,9 @@ double* create_d_array_min(double* a, int size_a, double* b, int size_b, double*
             d[d_index++] = min_val;
         }
     }
-    *result_size = d_index;  // реальный размер массива d
+    *result_size = d_index;  // Г°ГҐГ Г«ГјГ­Г»Г© Г°Г Г§Г¬ГҐГ° Г¬Г Г±Г±ГЁГўГ  d
 
-    // Если массив пустой, освобождаем память
+    // Г…Г±Г«ГЁ Г¬Г Г±Г±ГЁГў ГЇГіГ±ГІГ®Г©, Г®Г±ГўГ®ГЎГ®Г¦Г¤Г ГҐГ¬ ГЇГ Г¬ГїГІГј
     if (d_index == 0) {
         free(d);
         return NULL;
@@ -149,23 +148,24 @@ double* create_d_array_min(double* a, int size_a, double* b, int size_b, double*
     return d;
 }
 
-// 4. Печать информации о массиве
+// 4. ГЏГҐГ·Г ГІГј ГЁГ­ГґГ®Г°Г¬Г Г¶ГЁГЁ Г® Г¬Г Г±Г±ГЁГўГҐ
 void print_array_info(double* array, int size, const char* name) {
     if (array == NULL || size <= 0) {
-        printf("Массив %s: пуст или не существует\n", name);
+        printf("ГЊГ Г±Г±ГЁГў %s: ГЇГіГ±ГІ ГЁГ«ГЁ Г­ГҐ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ\n", name);
         return;
     }
 
-    printf("\n=== Массив %s (%d элементов) ===\n", name, size);
-    for (int i = 0; i < size && i < 15; i++) {  // выводим не более 15 элементов
+    printf("\n=== ГЊГ Г±Г±ГЁГў %s (%d ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў) ===\n", name, size);
+    for (int i = 0; i < size && i < 15; i++) {  // ГўГ»ГўГ®Г¤ГЁГ¬ Г­ГҐ ГЎГ®Г«ГҐГҐ 15 ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў
         printf("%s[%2d] = %8.4f", name, i, array[i]);
         if ((i + 1) % 3 == 0) printf("\n");
         else printf("\t");
     }
     if (size > 15) {
-        printf("... (показано 15 из %d элементов)\n", size);
+        printf("... (ГЇГ®ГЄГ Г§Г Г­Г® 15 ГЁГ§ %d ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў)\n", size);
     }
     else {
         printf("\n");
     }
+
 }

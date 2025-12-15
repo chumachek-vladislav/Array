@@ -1,4 +1,0 @@
-﻿  app.c
-C:\Users\ASUS\Desktop\Arrays\Arrays\app.c(79,11): warning C4013: time: нет определения; предполагается "extern" с возвратом типа "int"
-C:\Users\ASUS\Desktop\Arrays\Arrays\app.c(75,1): warning C4716: task14: должна возвращать значение
-  Arrays.vcxproj -> C:\Users\ASUS\Desktop\Arrays\Arrays\x64\Debug\Arrays.exe

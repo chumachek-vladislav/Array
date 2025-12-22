@@ -1,4 +1,4 @@
-﻿#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
@@ -13,7 +13,6 @@ double func(double x) {
 // 1. Заполнение массива значениями через func()
 double* full_elements(double* array_14, int size) {
     if (array_14 == NULL || size <= 0) {
-        printf("Ошибка: некорректные параметры в full_elements()\n");
         return NULL;
     }
 
@@ -33,7 +32,7 @@ void print_array(double* array_14, int size) {
 
 // 3. Сумма элементов
 double sum_array(double* array_14, int n) {
-    double sum = 0;
+    double sum = 0.0;
     for (int i = 0; i < n; i++) {
         sum += array_14[i];
     }
@@ -53,22 +52,19 @@ double find_max_not_A(double* array_14, int n, double A) {
         }
     }
     if (!found) {
-        printf("Все элементы равны A или массив пуст!\n");
-        return 0;
+        return NAN;
     }
     return max_val;
 }
 
-
 // ================== ФУНКЦИИ ДЛЯ ЛАБОРАТОРНОЙ 16 ==================
-
 // 1. Создание массива со случайными числами от -1.0 до 1.0
 double* create_random_array(int size) {
-    if (size <= 0) return NULL;
-
+    if (size <= 0) {
+        return NULL;
+    }
     double* array = (double*)malloc(size * sizeof(double));
     if (array == NULL) {
-        printf("Ошибка выделения памяти!\n");
         return NULL;
     }
 
@@ -115,13 +111,13 @@ double* create_d_array_min(double* a, int size_a, double* b, int size_b, double*
     // Создаём результирующий массив
     double* d = (double*)malloc(max_size * sizeof(double));
     if (d == NULL) {
-        printf("Ошибка выделения памяти для массива d!\n");
-        *result_size = 0;
+        if (result_size != NULL) {
+            *result_size = 0;
+        }
         return NULL;
     }
 
     int d_index = 0;
-
     for (int i = 0; i < max_size; i++) {
         if (i < size_a && i < size_b && i < size_c) {
             double min_val = a[i];
@@ -152,7 +148,6 @@ double* create_d_array_min(double* a, int size_a, double* b, int size_b, double*
 // 4. Печать информации о массиве
 void print_array_info(double* array, int size, const char* name) {
     if (array == NULL || size <= 0) {
-        printf("Массив %s: пуст или не существует\n", name);
         return;
     }
 

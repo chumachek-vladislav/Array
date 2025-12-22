@@ -3,6 +3,7 @@
 #include <math.h>
 #include <time.h>
 #include "array.h"
+#include <locale.h>
 
 // ================== ÔÓÍÊÖÈÈ ÄËß ËÀÁÎÐÀÒÎÐÍÎÉ 14 ==================
 // Ôóíêöèÿ äëÿ âû÷èñëåíèÿ f(x)
@@ -169,3 +170,4 @@ void print_array_info(double* array, int size, const char* name) {
     }
 
 }
+

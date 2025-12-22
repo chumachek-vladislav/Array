@@ -6,7 +6,7 @@
 #define SIZE 100
 
 int main() {
-    setlocale(LC_CTYPE, "");
+    setlocale(LC_CTYPE, "RUS");
     puts("Лабораторные работы 11, 14, 16, 19: Работа с массивами ===\n");
 
     int size;
@@ -194,3 +194,4 @@ int task19(void) {
     printf("\n!! - Данные успешно сохранены в файл '%s' - !!\n", filename);
     return 0;
 }
+

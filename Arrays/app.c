@@ -1,4 +1,4 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <locale.h>
 #include <stdlib.h>
 #include "array.h"
@@ -6,8 +6,8 @@
 #define SIZE 100
 
 int main() {
-    setlocale(LC_CTYPE, "RUS");
-    puts("Лабораторные работы 11, 14, 16, 19: Работа с массивами ===\n");
+    setlocale(LC_CTYPE, "");
+    puts("Лабораторные работы 11, 14, 16: Работа с массивами ===\n");
 
     int size;
     puts("Укажите размер массива");
@@ -25,8 +25,6 @@ int main() {
     task14(array, size); 
 
     task16();
-
-    task19();
 
     return 0;
 }
@@ -126,72 +124,3 @@ int task16(void) {
     printf("\nПамять освобождена.\n");
     return 0;
 }
-
-int task19(void) {
-    puts("\n\n================== Лабораторная 19 ==================");
-    puts("\nЗапись данных сотрудника");
-    printf("(Полная структура: ФИО, должность, зарплата, дата рождения)\n");
-    int n;
-    printf("\nВведите количество сотрудников ");
-    scanf("%d", &n);
-    if (n <= 0) {
-        printf("Ошибка: нужно минимум 1 сотрудник\n");
-        return 1;
-    }
-
-    Employee emp[50];
-
-    if (n > 50) {
-        printf("Введите меньше 50!\n");
-    }
-    for (int i = 0; i < n; i++) {
-        printf("\n--- Сотрудник №%d ---\n", i + 1);
-
-        printf("Фамилия: ");
-        scanf("%s", emp[i].surname);
-
-        printf("Имя: ");
-        scanf("%s", emp[i].name);
-
-        printf("Отчество: ");
-        scanf("%s", emp[i].patronymic);
-
-        printf("Должность: ");
-        scanf("%s", emp[i].position);
-
-        printf("Зарплата: ");
-        scanf("%lf", &emp[i].salary);
-
-        printf("Дата рождения (день месяц год через пробел): ");
-        scanf("%d %d %d", &emp[i].day, &emp[i].month, &emp[i].year);
-    }
-
-    // ЗАПИСЬ В ФАЙЛ
-    char filename[100];
-    printf("\nВведите имя файла для сохранения (например: employees.txt): ");
-    scanf("%s", filename);
-
-    FILE* file = fopen(filename, "w");
-    if (file == NULL) {
-        printf("Ошибка! Не могу создать файл '%s'\n", filename);
-        return 1;
-    }
-
-    // Записываем в файл
-    fprintf(file, "ОТЧЕТ ПО СОТРУДНИКАМ\n");
-    fprintf(file, "====================\n");
-    fprintf(file, "Всего сотрудников: %d\n\n", n);
-
-    for (int i = 0; i < n; i++) {
-        fprintf(file, "Сотрудник №%d\n", i + 1);
-        fprintf(file, "  ФИО: %s %s %s\n", emp[i].surname, emp[i].name, emp[i].patronymic);
-        fprintf(file, "  Должность: %s\n", emp[i].position);
-        fprintf(file, "  Зарплата: %.2f\n", emp[i].salary);
-        fprintf(file, "  Дата рождения: %02d.%02d.%04d\n\n",
-            emp[i].day, emp[i].month, emp[i].year);
-    }
-    fclose(file);
-    printf("\n!! - Данные успешно сохранены в файл '%s' - !!\n", filename);
-    return 0;
-}
-

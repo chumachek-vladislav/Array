@@ -22,15 +22,23 @@
 4. Освобождение динамически выделенной памяти.
 
 ## 📁 Структура проекта
-```text
-lab-arrays/
-├── src/
-│   ├── arrays.h   // объявления функций
-│   ├── arrays.c   // реализация функций
-│   └── app.c      // точка входа в программу
-├── Makefile
-└── README.md
-```
+├── .gitattributes
+
+├── .gitignore
+
+├── Arrays.sln
+
+├── Arrays.vcxproj
+
+├── Arrays.vcxproj.filters
+
+├── README.md
+
+├── app.c
+
+├── array.h
+
+└── arrays.c
 
 ## 🔧 Реализованные функции
 

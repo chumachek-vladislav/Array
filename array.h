@@ -29,6 +29,13 @@ int task14(double* array, int size);
  */
 int task16(void);
 
+/**
+  * Лабораторная работа 17
+  * @param size размер массива
+  * @return 0 при успехе, 1 при ошибке
+  */
+int task17(int size);
+
 double func(double x); // функция для получения значений как в работе 8
 
 /**
@@ -103,4 +110,58 @@ double* create_d_array_min(double* a, int size_a, double* b, int size_b, double*
  */
 void print_array_info(double* array, int size, const char* name);
 
+
+
+
+/**
+ * Пузырьковая сортировка массива целых чисел
+ * @param ptrarr указатель на сортируемый массив
+ * @param n количество элементов в массиве
+ */
+void sort_bubble(int* ptrarr, int n);
+
+/**
+ * Шейкерная (коктейльная) сортировка массива целых чисел
+ * @param ptrarr указатель на сортируемый массив
+ * @param n количество элементов в массиве
+ */
+void sort_kokteil(int* ptrarr, int n);
+
+/**
+ * Сортировка массива простым выбором
+ * @param ptrarr указатель на сортируемый массив
+ * @param n количество элементов в массиве
+ */
+void sort_select(int* ptrarr, int n);
+
+/**
+ * Сортировка массива вставками
+ * @param ptrarr указатель на сортируемый массив
+ * @param n количество элементов в массиве
+ */
+void sort_insert(int* ptrarr, int n);
+
+/**
+ * Формирование массива случайными целыми числами (для Лаб 17)
+ * @param ptrarr указатель на массив
+ * @param n размер массива
+ * @return указатель на заполненный массив
+ */
+int* full_array(int* ptrarr, int n);
+
+/**
+ * Вывод массива целых чисел на экран
+ * @param ptrarr указатель на массив
+ * @param n размер массива
+ * @return количество выведенных элементов
+ */
+int put_array(int* ptrarr, int n);
+
+/**
+ * Копирование целочисленного массива (вспомогательная функция)
+ * @param src указатель на исходный массив
+ * @param dest указатель на массив-приемник
+ * @param n количество копируемых элементов
+ */
+void copy_int_array(const int* src, int* dest, int n);
 #endif

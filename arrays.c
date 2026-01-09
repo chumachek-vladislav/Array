@@ -88,7 +88,6 @@ double find_min_among_three(double a, double b, double c, int* valid_count) {
     double min_val;
     *valid_count = 0;
 
-    // Проверяем, какие значения "валидны" (представлены)
     double values[3];
     int count = 0;
     values[count++] = a;
@@ -127,9 +126,8 @@ double* create_d_array_min(double* a, int size_a, double* b, int size_b, double*
             d[d_index++] = min_val;
         }
     }
-    *result_size = d_index;  // реальный размер массива d
+    *result_size = d_index;  // размер массива d
 
-    // Если массив пустой, освобождаем память
     if (d_index == 0) {
         free(d);
         return NULL;
@@ -152,7 +150,7 @@ void print_array_info(double* array, int size, const char* name) {
     }
 
     printf("\n=== Массив %s (%d элементов) ===\n", name, size);
-    for (int i = 0; i < size && i < 15; i++) {  // выводим не более 15 элементов
+    for (int i = 0; i < size && i < 15; i++) { 
         printf("%s[%2d] = %8.4f", name, i, array[i]);
         if ((i + 1) % 3 == 0) printf("\n");
         else printf("\t");
@@ -163,4 +161,100 @@ void print_array_info(double* array, int size, const char* name) {
     else {
         printf("\n");
     }
+}
+
+// ================== ФУНКЦИИ ДЛЯ ЛАБОРАТОРНОЙ 17 ==================
+// а) Пузырьковая сортировка
+void sort_bubble(int* ptrarr, int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (ptrarr[j] > ptrarr[j + 1]) {
+                int temp = ptrarr[j];
+                ptrarr[j] = ptrarr[j + 1];
+                ptrarr[j + 1] = temp;
+            }
+        }
+    }
+}
+
+// б) Шейкерная сортировка
+void sort_kokteil(int* ptrarr, int n) {
+    int left = 0;
+    int right = n - 1;
+    int swapped = 1;
+    while (left < right&& swapped) {
+        swapped = 0;
+        for (int i = left; i < right; i++) {
+            if (ptrarr[i] > ptrarr[i + 1]) {
+                int temp = ptrarr[i]; ptrarr[i] = ptrarr[i + 1]; ptrarr[i + 1] = temp;
+                swapped = 1;
+            }
+        }
+        right--;
+        if (!swapped) break;
+        swapped = 0;
+        for (int i = right; i > left; i--) {
+            if (ptrarr[i] < ptrarr[i - 1]) {
+                int temp = ptrarr[i]; ptrarr[i] = ptrarr[i - 1]; ptrarr[i - 1] = temp;
+                swapped = 1;
+            }
+        }
+        left++;
+    }
+}
+
+// в) Сортировка выбором
+void sort_select(int* ptrarr, int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int i_min = i;
+        for (int j = i + 1; j < n; j++) {
+            if (ptrarr[j] < ptrarr[i_min]) {
+                i_min = j;
+            }
+        }
+        if (i_min != i) {
+            int temp = ptrarr[i];
+            ptrarr[i] = ptrarr[i_min];
+            ptrarr[i_min] = temp;
+        }
+    }
+}
+
+// г) Сортировка вставками
+void sort_insert(int* ptrarr, int n) {
+    for (int i = 1; i < n; i++) {
+        int temp = ptrarr[i];
+        int j = i;
+        while (j > 0 && ptrarr[j - 1] > temp) {
+            ptrarr[j] = ptrarr[j - 1];
+            j--;
+        }
+        ptrarr[j] = temp;
+    }
+}
+
+// Заполнение массива, используя rand()
+int* full_array(int* ptrarr, int n) {
+    for (int i = 0; i < n; i++) {
+        ptrarr[i] = rand() % 1000;
+    }
+    return ptrarr;
+}
+
+// Печать массива int
+int put_array(int* ptrarr, int n) {
+    printf("[ ");
+    int limit = (n > 20) ? 20 : n;
+    for (int i = 0; i < limit; i++) {
+        printf("%d ", ptrarr[i]);
+    }
+    if (n > 20) printf("... ");
+    printf("]\n");
+    return n;
+}
+
+// Вспомогательная функция копирования для сортировки одних и тех же данных
+void copy_int_array(const int* src, int* dest, int n) {
+    for (int i = 0; i < n; i++) 
+        dest[i] = src[i];
 }

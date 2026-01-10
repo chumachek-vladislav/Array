@@ -29,23 +29,20 @@
 4. Вывод исходного массива, полученного времени для каждого алгоритма и отсортированного массива.
 
 ## 📁 Структура проекта
-├── .gitattributes
 
-├── .gitignore
+```text
+.
+├── app.c                   # Точка входа в программу
+├── array.h                 # Заголовочный файл 
+├── arrays.c                # Реализация функций для обработки массивов
+├── Arrays.sln              # Файл решения (Solution) для Visual Studio
+├── Arrays.vcxproj          # Файл конфигурации проекта Visual Studio
+├── Arrays.vcxproj.filters  # Настройки отображения файлов в обозревателе решений
+├── .gitignore              # Исключения Git
+├── .gitattributes          # Настройки атрибутов Git
+└── README.md               # Документация проекта
 
-├── Arrays.sln
-
-├── Arrays.vcxproj
-
-├── Arrays.vcxproj.filters
-
-├── README.md
-
-├── app.c
-
-├── array.h
-
-└── arrays.c
+```
 
 ## 🛠️ Реализованные функции
 

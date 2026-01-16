@@ -4,6 +4,27 @@
 #include <time.h>
 #include "array.h"
 
+
+// ================== ФУНКЦИИ ДЛЯ ЛАБОРАТОРНОЙ 11 ==================
+// Функция считает среднее арифметическое ненулевых элементов
+double calculate_avg_nonzero(double* array, int size) {
+    double sum = 0;
+    int count = 0;
+
+    for (int i = 0; i < size; i++) {
+        if (array[i] != 0.0) {
+            sum += array[i];
+            count++;
+        }
+    }
+
+    if (count == 0) {
+        return NAN; 
+    }
+
+    return sum / count;
+}
+
 // ================== ФУНКЦИИ ДЛЯ ЛАБОРАТОРНОЙ 14 ==================
 // Функция для вычисления f(x)
 double func(double x) {

@@ -1,6 +1,7 @@
 ﻿#include <stdio.h>
 #include <locale.h>
 #include <stdlib.h>
+#include <math.h>
 #include <time.h>
 #include "array.h"
 
@@ -76,7 +77,7 @@ int main() {
             break;
 
         case 0:
-            printf("Выход из программы...\n");
+            printf("Выход из программы\n");
             break;
 
         default:
@@ -90,25 +91,21 @@ int main() {
 
 
 int task11(double* array, int size) {
-    double sum = 0;
-    int count = 0;
-    printf("Введите %d целых чисел:\n", size);
+    printf("Введите %d чисел:\n", size);
     for (int i = 0; i < size; i++) {
+        printf("Элемент [%d]: ", i);
         scanf("%lf", &array[i]);
-
-        if (array[i] != 0) {
-            sum += array[i];
-            count++;
-        }
     }
 
-    if (count == 0) {
-        printf("В массиве нет ненулевых элементов\n");
+    double result = calculate_avg_nonzero(array, size);
+
+    if (isnan(result)) {
+        printf("В массиве нет ненулевых элементов.\n");
     }
     else {
-        double avg = sum / count;
-        printf("Среднее арифметическое (без нулевых элементов): %.2f\n", avg);
+        printf("Среднее арифметическое (без нулевых элементов): %.2f\n", result);
     }
+
     return 0;
 }
 
